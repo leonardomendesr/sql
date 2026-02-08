@@ -1,0 +1,6 @@
+SELECT -- Comando básico para selecionar dados em uma tabela
+  * --seleciona todos os campos
+FROM
+  tabela_clientes --exemplo de tabela
+
+
