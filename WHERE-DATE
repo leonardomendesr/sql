@@ -2,47 +2,72 @@
 -- Usando BETWEEN com TO_DATE no formato DD-MM-YYYY
 
 -- Exemplo 1: Busca simples com BETWEEN
-SELECT *
-FROM tabela_exemplo
-WHERE data_coluna BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
+SELECT 
+  *
+FROM 
+  tabela_exemplo
+WHERE 
+  data_coluna BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
                      AND TO_DATE('31-12-2026', 'DD-MM-YYYY');
 
 
 -- Exemplo 2: Com múltiplas colunas
-SELECT id, nome, data_criacao, descricao
-FROM pedidos
-WHERE data_criacao BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
+SELECT 
+  id, 
+  nome, 
+  data_criacao, 
+  descricao
+FROM 
+  pedidos
+WHERE 
+  data_criacao BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
                       AND TO_DATE('31-12-2026', 'DD-MM-YYYY')
-ORDER BY data_criacao DESC;
+ORDER BY 
+  data_criacao DESC;
 
 
 -- Exemplo 3: Com filtros adicionais
-SELECT id, cliente, data_pedido, total
-FROM vendas
-WHERE data_pedido BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
+SELECT 
+  id, 
+  cliente, 
+  data_pedido, 
+  total
+FROM 
+  vendas
+WHERE 
+  data_pedido BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
                      AND TO_DATE('31-12-2026', 'DD-MM-YYYY')
   AND status = 'Concluído'
   AND total > 1000;
 
 
 -- Exemplo 4: Buscando um mês específico (Janeiro de 2026)
-SELECT *
-FROM eventos
-WHERE data_evento BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
+SELECT 
+  *
+FROM 
+  eventos
+WHERE 
+  data_evento BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
                      AND TO_DATE('31-01-2026', 'DD-MM-YYYY');
 
 
 -- Exemplo 5: Usando NOT BETWEEN para datas fora do intervalo
-SELECT *
-FROM registros
-WHERE data_registro NOT BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
+SELECT 
+  *
+FROM 
+  registros
+WHERE 
+  data_registro NOT BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
                            AND TO_DATE('31-12-2026', 'DD-MM-YYYY');
 
 
 -- Exemplo 6: Combinando com agregação
-SELECT COUNT(*) as total_registros, 
+SELECT 
+  COUNT(*) as total_registros, 
        SUM(valor) as total_valor,
        AVG(valor) as media_valor
-FROM transacoes
-WHERE data_transacao BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
+FROM 
+  transacoes
+WHERE 
+  data_transacao BETWEEN TO_DATE('01-01-2026', 'DD-MM-YYYY') 
                         AND TO_DATE('31-12-2026', 'DD-MM-YYYY');
